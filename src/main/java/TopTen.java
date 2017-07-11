@@ -24,11 +24,11 @@ public class TopTen  implements TopTenInterface {
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
             //configure connection
             is = connection.getURL().openStream();  // throws an IOException
-        br = new BufferedReader(new InputStreamReader(is));
-        while ((line = br.readLine()) != null) {
-            sb.append(line);
-            System.out.println(line);
-        }
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+               sb.append(line);
+                System.out.println(line);
+            }
         } catch (MalformedURLException mue) {
             mue.printStackTrace();
         } catch (IOException ioe) {
@@ -76,7 +76,11 @@ public class TopTen  implements TopTenInterface {
         return sb.toString();
     }
 
-     public List<String> parseText(String text, List<Character> delimiters){
+    // dodati kontrolu za duzinu rijeci
+    // dodati ignorecase
+    // dodati blacklist
+
+     public List<String> parseText(String text, List<Character> delimiters){ //hashmap ili nesto samo za lookup!
 
         List<String> res = new ArrayList<String>();
 
@@ -91,6 +95,30 @@ public class TopTen  implements TopTenInterface {
         }
         return res;
     }
+
+/*
+    public List<String> parseText(String text, List<Character> delimiters){ //hashmap ili nesto samo za lookup!
+
+        List<String> res = new ArrayList<String>();
+        HashMap<Integer, Character> delimiteri = new HashMap <Integer, Character> ();
+        for (int i=0; i<delimiters.size(); i++)
+            {
+                delimiteri.put(i,delimiters.get(i) );
+            }
+
+        int d=0; //position of last delimiter
+        for(int i=0; i < text.length(); i++){
+            char c = text.charAt(i);
+            if(delimiteri.containsValue(c)) {
+                String word = text.substring(d,i);
+                if(word.length() > 0) res.add(word);
+                d = i+1;
+            }
+        }
+
+        return res;
+    }*/
+
 
     public Map<String, Integer> countWords(List<String> words) {
         Map<String, Integer> WordCount = new HashMap<String, Integer>();
