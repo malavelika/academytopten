@@ -79,7 +79,7 @@ public class TopTen  implements TopTenInterface {
     // dodati kontrolu za duzinu rijeci
     // dodati ignorecase
     // dodati blacklist
-
+/*
      public List<String> parseText(String text, List<Character> delimiters){ //hashmap ili nesto samo za lookup!
 
         List<String> res = new ArrayList<String>();
@@ -94,9 +94,9 @@ public class TopTen  implements TopTenInterface {
             }
         }
         return res;
-    }
+    } */
 
-/*
+
     public List<String> parseText(String text, List<Character> delimiters){ //hashmap ili nesto samo za lookup!
 
         List<String> res = new ArrayList<String>();
@@ -117,7 +117,7 @@ public class TopTen  implements TopTenInterface {
         }
 
         return res;
-    }*/
+    }
 
 
     public Map<String, Integer> countWords(List<String> words) {
