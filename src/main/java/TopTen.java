@@ -145,6 +145,10 @@ public class TopTen  implements TopTenInterface {
             }
         }
 
+        String word = text.substring(d);
+        if((word.length() > 2)&&(!blacklista.containsValue(word))) res.add(word.toLowerCase());
+
+
         for (int i=0; i<res.size(); i++) {System.out.println((i+1) + ". " + res.get(i));}
         return res;
     }

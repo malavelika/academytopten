@@ -27,7 +27,7 @@ public class Main {
     int count;
 }
     public static void main(String[] args) throws Exception{
-        List<Character> delimiters = Arrays.asList(' ', ',' ,'.' , ':', '!', '?', '"', '(', ')','-');
+        List<Character> delimiters = Arrays.asList(' ', ',' ,'.' , ':', '!', '?', '"', '(', ')','-','[','*','}','{','0','9','8','7','6','5','4','3','2','1',']','[','\\','/','\t');
 
 
         Properties prop = new Properties();
@@ -38,7 +38,8 @@ public class Main {
             output = new FileOutputStream("config.properties");
 
             // set the properties value
-            prop.setProperty("WebSites", "klix.ba|oslobodjenje.ba|avaz.ba");
+            //prop.setProperty("WebSites", "klix.ba|oslobodjenje.ba|avaz.ba");
+            prop.setProperty("WebSites", "http://ims/IMS/");
             prop.setProperty("user", "XXXX");
             prop.setProperty("password", "XXX");
 
@@ -58,14 +59,15 @@ public class Main {
 
         }
 
-        URL url = new URL("https://www.klix.ba/");
+        //URL url = new URL("https://www.klix.ba/");
+        URL url = new URL("http://ims/IMS");
         TopTen tt = new TopTen();
         String html = tt.getHtml(url);
         String body = tt.getBody(html);
         String text = tt.removeHtmlTags(body);
         List<String> words = tt.parseText(text, delimiters);
         Map<String, Integer> wordCount = tt.countWords(words);
-        List<WordCount> listWC = new ArrayList<WordCount>();
+        List<WordCount> listWC = new ArrayList<WordCount>(); // same as in declaration
 
         for(Map.Entry<String,Integer> wc : wordCount.entrySet()){
             listWC.add(new WordCount(wc.getKey(), wc.getValue()));
